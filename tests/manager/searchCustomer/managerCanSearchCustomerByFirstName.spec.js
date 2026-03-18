@@ -41,7 +41,7 @@ let customerListPage = new CustomersListPage(page);
 
 await customerListPage.open();
 await customerListPage.SearchFieldFill(firstName);
-await customerListPage.assertCustomerAvaiableInTable({firstName, lastName, postCode});
+await customerListPage.assertCustomerAvailableInTable({firstName, lastName, postCode});
 await customerListPage.assOnlyOneCustomer();
 
 

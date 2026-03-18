@@ -38,13 +38,14 @@ export class CustomersListPage {
     await expect(this.accNumCell).not.toHaveText('');
   }
 
-  async assertDeleteLastCustomerInformation({firstName, lastName, postCode}){
-   const lastCustomerdelete = this.rows.filter({ hasText: firstName })
-   .filter({ hasText: lastName })
-   .filter({ hasText: postCode });
-    await expect(lastCustomerdelete).toHaveCount(0);
+  async assertCustomerAvailableInTable({ firstName, lastName, postCode }) {
+  const customerRow = this.rows
+    .filter({ hasText: firstName })
+    .filter({ hasText: lastName })
+    .filter({ hasText: postCode });
 
-  }
+  await expect(customerRow).toHaveCount(1);
+}
 
   async deleteLastCustomer(){
     await this.deleteAccCell.getByRole('button').click();
@@ -53,15 +54,22 @@ export class CustomersListPage {
   async SearchFieldFill(text){
     await this.SearchField.fill(text);
   }
-  async assertCustomerAvaiableInTable(firstName, lastName, postCode){
-   this.customerRow = this.rows.filter({hasText: firstName})
-    .filter({hasText: lastName})
-    .filter({hasText: postCode});
-   
-    await expect(this.customerRow).toHaveCount(0);
-  }
+  
   async assOnlyOneCustomer(){
     await expect(this.rows).toHaveCount(2);
+  }
+  async emptyAccNumberCustomer(){
+    await expect(this.accNumCell).toHaveText('');
+}
+  
+
+  
+ async customerDeleteFromList({ firstName, lastName, postCode }) {
+ const deletedCustomerRow = this.rows.filter({ hasText: firstName })
+    .filter({ hasText: lastName })
+    .filter({ hasText: postCode });
+    await expect(deletedCustomerRow).toHaveCount(0);
+
   }
 
 }

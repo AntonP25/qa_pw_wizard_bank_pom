@@ -51,7 +51,7 @@ await customerListPage.assertLastCustomerInformation({
   lastName,
   postCode
 });
-
+await customerListPage.emptyAccNumberCustomer();
 
 
 });

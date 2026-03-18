@@ -32,7 +32,8 @@ export class OpenAccountPage {
   }
 
   async assertCustomerChosen(customer) {
-    await expect(this.customerNameField).toHaveValue(customer);
+    await expect(this.customerNameField.locator('option:checked')).toHaveText(customer);
+
   }
 
   async processButtonClick(){

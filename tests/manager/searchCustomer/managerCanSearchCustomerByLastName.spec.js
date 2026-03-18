@@ -42,6 +42,6 @@ test('Assert manager can search customer by Last Name', async ({ page }) => {
  
  await customerListPage.open();
  await customerListPage.SearchFieldFill(lastName);
- await customerListPage.assertCustomerAvaiableInTable({firstName, lastName, postCode});
+ await customerListPage.assertCustomerAvailableInTable({firstName, lastName, postCode});
  await customerListPage.assOnlyOneCustomer();
 });

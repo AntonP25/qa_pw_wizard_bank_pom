@@ -40,16 +40,26 @@ test('Assert manager can delete customer', async ({ page }) => {
   4. Reload the page.
   5. Assert customer row is not present in the table. 
   */
- let customersListPage = new CustomersListPage (page);
- 
+ let customersListPage = new CustomersListPage(page);
+
   await customersListPage.open();
+
+  
   await customersListPage.deleteLastCustomer();
-  await customersListPage.pageReload();
-  await customersListPage.assertDeleteLastCustomerInformation({
-    firstName,
-    lastName,
-    postCode
+
+  
+  await customersListPage.customerDeleteFromList({ 
+    firstName, 
+    lastName, 
+    postCode 
   });
 
+
+  await customersListPage.pageReload();
+  await customersListPage.customerDeleteFromList({ 
+    firstName, 
+    lastName, 
+    postCode 
+  });
 
 });
